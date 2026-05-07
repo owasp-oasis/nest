@@ -37,7 +37,7 @@ function hasComposeV1() {
 function run(command, args) {
   const result = spawnSync(command, args, {
     stdio: 'inherit',
-    shell: isWindows,
+    shell: false,
   });
   if (result.error) {
     console.error(
