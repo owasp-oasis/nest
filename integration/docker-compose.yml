@@ -18,6 +18,11 @@ services:
   mqtt:
     container_name: test-mqtt
     image: eclipse-mosquitto
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /mosquitto/data
+      - /mosquitto/log
     volumes:
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
     ports:
