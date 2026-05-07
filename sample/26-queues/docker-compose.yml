@@ -4,3 +4,5 @@ services:
     image: redis:alpine
     ports:
       - 6379:6379
+    security_opt:
+      - no-new-privileges:true
