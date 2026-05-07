@@ -3,6 +3,8 @@ version: "3"
 services:
   mongodb:
     image: mongo:8.2
+    security_opt:
+      - no-new-privileges:true
     environment:
       - MONGODB_DATABASE="test"
     ports:
