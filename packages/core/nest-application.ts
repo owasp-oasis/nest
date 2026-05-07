@@ -126,7 +126,7 @@ export class NestApplication
     const passCustomOptions =
       isObject(this.appOptions.cors) || isFunction(this.appOptions.cors);
     if (!passCustomOptions) {
-      return this.enableCors();
+      return this.enableCors({ origin: false });
     }
     return this.enableCors(this.appOptions.cors);
   }
