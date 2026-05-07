@@ -36,6 +36,11 @@ services:
   mongodb:
     container_name: test-mongodb
     image: mongo:latest
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/run
+      - /data/db
     environment:
       - MONGODB_DATABASE="test"
     ports:
