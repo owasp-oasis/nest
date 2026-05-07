@@ -52,6 +52,8 @@ services:
     container_name: test-zookeeper
     hostname: zookeeper
     image: confluentinc/cp-zookeeper:7.9.6
+    security_opt:
+      - no-new-privileges:true
     ports:
       - "2181:2181"
     environment:
