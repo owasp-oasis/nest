@@ -4,6 +4,8 @@ services:
   mysql:
     image: mysql:9
     restart: always
+    security_opt:
+      - no-new-privileges:true
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: test
