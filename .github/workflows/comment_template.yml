@@ -13,18 +13,22 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            const body = [
+              "## Validation summary",
+              "",
+              "| | |",
+              "| :-- | :-- |",
+              "| **Decision** | `Accept` / `Modify` |",
+              "| **Confidence** | `High` / `Medium` / `Low` |",
+              "| **Summary** | _Write 1-2 sentences here..._ |",
+              "| **Next step** | `merge` / `revise` / `re-review` |",
+              "",
+              "> Edit this comment to fill in your review."
+            ].join("\n");
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `## Validation summary
-
-| | |
-| :-- | :-- |
-| **Decision** | \`Accept\` / \`Modify\` |
-| **Confidence** | \`High\` / \`Medium\` / \`Low\` |
-| **Summary** | _Write 1–2 sentences here…_ |
-| **Next step** | \`merge\` / \`revise\` / \`re-review\` |
-
-> Edit this comment to fill in your review.`
-            })
+              body: body
+            });
