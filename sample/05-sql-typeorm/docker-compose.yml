@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: test
     ports:
       - "3306:3306"
+    security_opt:
+      - no-new-privileges:true
   db-test:
     image: mysql:9
     restart: always
@@ -17,3 +19,5 @@ services:
       MYSQL_DATABASE: test
     ports:
       - "3307:3306"
+    security_opt:
+      - no-new-privileges:true
