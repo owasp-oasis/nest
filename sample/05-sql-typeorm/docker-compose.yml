@@ -12,6 +12,7 @@ services:
   db-test:
     image: mysql:9
     restart: always
+    read_only: true
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: test
