@@ -4,6 +4,10 @@ services:
   mysql:
     image: mysql:9
     restart: always
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/run/mysqld
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: test
@@ -12,6 +16,10 @@ services:
   db-test:
     image: mysql:9
     restart: always
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/run/mysqld
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: test
