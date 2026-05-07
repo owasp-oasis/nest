@@ -7,3 +7,5 @@ services:
       - MONGODB_DATABASE="test"
     ports:
       - 27017:27017
+    security_opt:
+      - no-new-privileges:true
