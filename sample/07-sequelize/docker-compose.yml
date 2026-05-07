@@ -4,8 +4,18 @@ services:
   mysql:
     image: mysql:9
     restart: always
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/run/mysqld
+      - /var/lib/mysql-files
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: test
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
