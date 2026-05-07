@@ -48,6 +48,10 @@ services:
       - "15672:15672"
       - "5672:5672"
     tty: true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/lib/rabbitmq/mnesia
   zookeeper:
     container_name: test-zookeeper
     hostname: zookeeper
