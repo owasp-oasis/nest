@@ -33,6 +33,11 @@ services:
     ports:
       - "3306:3306"
     restart: always
+    read_only: true
+    tmpfs:
+      - /var/lib/mysql
+      - /var/run/mysqld
+      - /tmp
   mongodb:
     container_name: test-mongodb
     image: mongo:latest
