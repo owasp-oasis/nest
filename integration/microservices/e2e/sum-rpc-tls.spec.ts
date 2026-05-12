@@ -15,10 +15,13 @@ describe('RPC TLS transport', () => {
   let cert: string;
 
   before(() => {
-    // Generate a self-signed key pair
-    key = fs
-      .readFileSync(path.join(__dirname, '../src/tcp-tls/privkey.pem'), 'utf8')
-      .toString();
+    const envKey = process.env.TCP_TLS_PRIVATE_KEY;
+    if (!envKey) {
+      throw new Error(
+        'TCP_TLS_PRIVATE_KEY environment variable is required for TLS tests',
+      );
+    }
+    key = envKey;
     cert = fs
       .readFileSync(path.join(__dirname, '../src/tcp-tls/ca.cert.pem'), 'utf8')
       .toString();
